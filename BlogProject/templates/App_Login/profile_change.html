@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Change Profile Page
+{% endblock %}
+{% block content %}
+<h2>Change your Profile</h2>
+<form method="POST">
+{% csrf_token %}
+{{ form|crispy }}
+<p>if you want change your password <a href="{% url 'changePassword' %}" class="btn btn-sm btn-primary">click here</a></p>
+<button type="submit" class="btn btn-info">Change</button>
+</form>
+{% endblock %}

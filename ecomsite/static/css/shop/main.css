@@ -1,0 +1,12 @@
+.card-text{
+    color: #238b00;
+    font-size: 1.5rem;
+    font-weight: 650;
+}
+.card-title{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.card{
+    border: 3px solid #abc502;
+}

@@ -1,0 +1,64 @@
+{% extends 'navbar.html' %}
+{% block title %}
+    Profile page
+{% endblock %}
+{% block content %}
+    <div class="row mt-3">
+        <div class="col-sm-4">
+            {% if user.user_profile.profile_pic %}
+            <img src="/media/{{ user.user_profile.profile_pic }}" class="rounded-circle" width="300px" height="300px">
+            {% else %}
+            <img src="/media/profile_pics/default.jpg" class="rounded-circle" width="300px" height="300px">
+            {% endif %}
+        </div>
+        <div class="col-sm-8 text-light">
+            <h3 class="text-warning">{{ user.username }} <a href="{% url 'App_Login:editProfile' %}" class="btn btn-sm btn-info">Edit Profile</a></h3>
+            <h4>{{ user.post.count }} Posts &nbsp;&nbsp; {{ user.follower.count }} Follower
+            &nbsp;&nbsp;{{ user.following.count }} Following</h4>
+            <br>
+            <h4 class="text-warning">{{ user.user_profile.full_name }}</h4>
+            <h5>{{ user.user_profile.description }}</h5>
+        </div>
+    </div>
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-info m-5" data-bs-toggle="modal" data-bs-target="#myModal">
+  Post Photo
+</button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Post Photo</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Post</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        {% for post in user.post.all %}
+        <img src="/media/{{ post.image }}" width="250px" height="250px">
+    {% endfor %}
+    </div>
+    
+</div>
+{% endblock %}

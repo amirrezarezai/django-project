@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block tilte %}
+    product detail
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="{{ product_object.image }}" width="480px" height="480px">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mt-5" style="font-size: 2rem; font-weight: bold">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ product_object.title }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="color: #238b00">
+                        $ {{ product_object.price }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="color: darkred">
+                        $ {{ product_object.discount_price }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="font-size: 1.5rem; color: #5b5b5b">
+                        {{ product_object.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

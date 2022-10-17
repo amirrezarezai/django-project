@@ -1,0 +1,37 @@
+{% extends 'navbar.html' %}
+{% block title %}
+    User Profile page
+{% endblock %}
+{% block content %}
+    <div class="row mt-3">
+        <div class="col-sm-4">
+            {% if user_other.user_profile.profile_pic %}
+            <img src="/media/{{ user_other.user_profile.profile_pic }}" class="rounded-circle" width="300px" height="300px" >
+            {% else %}
+            <img src="/media/profile_pics/default.jpg" class="rounded-circle" width="300px" height="300px">
+            {% endif %}
+        </div>
+        <div class="col-sm-8 text-light">
+            <h3 class="text-warning">{{ user_other.username }}</h3>
+            {% if not already_followed %}
+                <a class="btn btn-sm btn-primary" href="{% url 'App_Login:follow' username=user_other.username %}">follow</a>
+            {% else %}
+                 <a class="btn btn-sm btn-primary" href="{% url 'App_Login:unfollow' username=user_other.username %}">unfollow</a>
+            {% endif %}
+            <h4>{{ user_other.post.count }} Posts &nbsp;&nbsp; {{ user_other.follower.count }} Follower
+            &nbsp;&nbsp;{{ user_other.following.count }} Following</h4>
+            <br>
+            <h4 class="text-warning">{{ user_other.user_profile.full_name }}</h4>
+            <h5>{{ user_other.user_profile.description }}</h5>
+        </div>
+    </div>
+
+<div class="row mt-3">
+    <div class="col-md-12 ">
+        {% for post in user_other.post.all %}
+        <img src="/media/{{ post.image }}" width="250px" height="250px">
+    {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

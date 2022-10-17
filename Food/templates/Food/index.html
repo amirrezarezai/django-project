@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+Food Page
+{% endblock %}
+{% block content %}
+    <div class="row container">
+    <form method="POST">
+    {% csrf_token %}
+        <select name="food_consumed" id="food_consumed" class="form-select col-2">
+            <optgroup label="Food"></optgroup>
+            {% for foo in food %}
+            <option value="{{ foo.name }}">{{ foo.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-success col-1 mt-3">Add</button>
+    </form>
+    </div>
+    <table class="table" id="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Carbs</th>
+      <th scope="col">Protein</th>
+      <th scope="col">Fat</th>
+        <th scope="col">Calories</th>
+        <th scope="col">Delete item</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for food in consumed_food %}
+    <tr>
+      <th scope="row">{{ food.food_consume.name }}</th>
+      <td>{{ food.food_consume.carbs }}</td>
+      <td>{{food.food_consume.protein}}</td>
+      <td>{{food.food_consume.fat}}</td>
+        <td>{{food.food_consume.calories}}</td>
+        <td><a href="{% url 'delete' food.id %}" class="btn btn-danger" >Remove</a></td>
+    </tr>
+  {% endfor %}
+          <tr>
+            <td id="name"><b>Total</b></td>
+            <td id="totalCarbs"><b></b></td>
+            <td id="totalProtien"><b></b></td>
+            <td id="totalFats"><b></b></td>
+            <td id="totalCalories"><b></b></td>
+        </tr>
+  </tbody>
+</table>
+{% endblock %}

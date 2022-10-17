@@ -1,0 +1,36 @@
+body{
+    background-color: #00031c;
+}
+a{
+    text-decoration: none;
+}
+.signup{
+    width: 50%;
+    height: 50%;
+    border: 2px solid #a1a1a1;
+    padding: 2rem;
+    margin: 2rem auto;
+    color:aliceblue ;
+    box-shadow: 5px 5px 10px 10px aliceblue;
+    background-color: #02083a;
+}
+.login{
+    width: 50%;
+    height: 50%;
+    border: 2px solid #a1a1a1;
+    padding: 2rem;
+    margin: 2rem auto;
+    color:aliceblue ;
+    box-shadow: 5px 5px 10px 10px aliceblue;
+    background-color: #02083a;
+}
+.edit{
+    width: 100%;
+    height: 50%;
+    border: 2px solid #a1a1a1;
+    padding: 2rem;
+    margin: 2rem auto;
+    color:aliceblue ;
+    box-shadow: 5px 5px 10px 10px aliceblue;
+    background-color: #02083a;
+}
