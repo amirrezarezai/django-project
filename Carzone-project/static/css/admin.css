@@ -1,0 +1,9 @@
+#header{
+    background-color: #052d8f;
+}
+.module caption, .inline-group{
+    background-color: #052d8f;
+}
+.content{
+    background-color: rgba(5, 5, 0, 0.22);
+}
